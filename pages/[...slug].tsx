@@ -6,18 +6,15 @@ import NextLink from 'next/link'
 import {useRouter} from 'next/router'
 import React from 'react'
 import remarkGfm from 'remark-gfm'
-// import components from 'utils/components'
 import {Container, Box, Heading, Text, Link, Image,Center} from '@chakra-ui/react'
-// import {NextSeo} from 'next-seo'
-// const codesandbox = require('remark-codesandbox')
 
+const SEO = dynamic(() => import('components/SEO'))
 const PostPage = dynamic(() => import('components/PostPage'))
 
 const Post = ({
   title,
   description,
   date,
-  tags,
   originalUrl,
   mdxSource,
   cover
@@ -37,11 +34,12 @@ const Post = ({
       }}
       className="post"
     >
-      {/* <NextSeo
+      <SEO
         title={title}
         description={description}
+        cover={cover}
         openGraph={{title, description}}
-      /> */}
+      />
       <Box as="hgroup">
         <Text textAlign="center" color="gray.500" fontSize="xs" as="p">
           Published {date}
